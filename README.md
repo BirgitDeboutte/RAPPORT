@@ -1,4 +1,4 @@
-# RAPPORT <img src="www/logo.png" align="right" height="120" />
+# RAPPORT <img src="www/logo.png" align="right" height="120" /> 
 
 **Relatedness Analysis and Population Planning, Organisation, Reporting and Tracking**
 
@@ -30,6 +30,12 @@ additional hard filters.
 - **Management tools**  Population growth projections, dam breeding window 
 planning, progeny planning with correction rate estimation and breeding stock
 recruitment tracking.
+
+## Documentation
+
+- [User and Methods Vignette](https://BirgitDeboutte.github.io/RAPPORT/RAPPORT_vignette.html) — computational methods, module descriptions, and interpretation guidance
+- [User Guide](https://BirgitDeboutte.github.io/RAPPORT/RAPPORT_user_guide.html) — step-by-step instructions for using the application
+
 
 ## Installation and usage
 
