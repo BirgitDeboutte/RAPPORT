@@ -5,6 +5,7 @@
 # Reactive args: litter_ov, selected_year
 # Defines outputs: vb_lit_total, vb_lit_size, vb_lit_sexratio, vb_lit_thisyear,
 #                  litterplot, litters, selectlitter
+
 # Note: vb_lit_size filters to own-population litters (Dam or Sire in ownpop).
 #       vb_litsize in popOverviewHelper uses all litters — intentionally different.
 

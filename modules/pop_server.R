@@ -1,18 +1,8 @@
 # ── pop_server.R ──────────────────────────────────────────────────────────────
 # Coordinator: owns all shared reactives and wires up the 8 panel helpers.
 #
-# Replaces (in server.R):
-#   popOverviewLitterServer("popOverviewLitter", rd)
-#   pupInfoServer("pupInfo", rd)
-#   popParamsHealthServer("popParamsHealth", rd)
-#   pedtreeServer("pedtree", rd)
-#
-# New call in server.R:
-#   popServer("pop", rd)
-#
 # Shared reactives (computed once, passed to helpers):
 #   selected_year      – reactiveVal for bar-chart click sync (Overview/Litters/Dams/Sires)
-#   breeders_col_specified – was duplicated in pupInfoServer & popParamsHealthServer
 #   litter_ov          – single source of truth for per-litter records
 #   dam_table          – derived from litter_ov; also written to rd$dams
 #   sire_table         – derived from litter_ov; also written to rd$sires
@@ -39,7 +29,6 @@ popServer <- function(id, rd) {
     selected_year <- reactiveVal(NULL)
     
     # ── breeders_col_specified ────────────────────────────────────────────────
-    # Was independently defined in both pupInfoServer and popParamsHealthServer.
     breeders_col_specified <- reactive({
       req(rd$breeders, rd$data)
       !setequal(rd$breeders[[rd$datid]], rd$data[[rd$datid]])

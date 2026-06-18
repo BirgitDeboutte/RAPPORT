@@ -1,13 +1,5 @@
 # ── management_pop_growth_server.R ───────────────────────────────────────────
 # Panel helper for the "Population Growth" tab.
-# Called from managementServer(); shares input/output/session namespace.
-#
-# Inputs consumed: goal, correction_pct, litdam, litsire, siresext_pct, retire_col
-# Sets on rd:      rd$damsint, rd$siresint
-# Defines outputs: management_data_warning (shared across all tabs), no_breeders_warning,
-#                  vb_goal_*, pb_*, last_year, ne_recommendation,
-#                  vb_capacity (FIXED – expected progeny this year via capacity_vals),
-#                  vb_ne, last_year_badge, this_year_badge, current
 
 managementPopGrowthHelper <- function(input, output, session, rd,
                                       litter_stats,
@@ -53,7 +45,6 @@ managementPopGrowthHelper <- function(input, output, session, rd,
       n_total <- sum(!is.na(x) & as.character(x) != "")
       n_valid <- sum(!is.na(parsed))
       
-      # after
       if (n_total > 0 && n_valid == 0) {
         tags$div(
           class = "text-danger",
@@ -217,10 +208,7 @@ managementPopGrowthHelper <- function(input, output, session, rd,
       )
     )
   })
-  # ── Expected Progeny This Year value box (FIXED) ───────────────────────────────
-  # Previously this output was only defined in the Pup Planner section and
-  # displayed coverage% — wrong label and wrong value.
-  # Now uses capacity_vals(), the same reactive as vb_pups_projected.
+  # ── Expected Progeny This Year value box ───────────────────────────────
   output$vb_capacity <- renderUI({
     if (!breeders_col_specified()) return(h3("\u2014", style = "color:grey"))
     req(capacity_vals())

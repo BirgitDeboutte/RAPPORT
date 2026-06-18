@@ -1,8 +1,5 @@
 # ── management_server.R ───────────────────────────────────────────────────────
-# Coordinator: owns all shared inputs/reactives and wires up the four panel
-# helpers.  Each helper receives input/output/session from this scope so ALL
-# output IDs and input IDs stay in the management module namespace.
-# management_ui.R requires NO changes.
+# all shared inputs/reactives for the management tabs
 
 source("modules/management_pop_growth_server.R")
 source("modules/management_dam_planner_server.R")
@@ -12,12 +9,11 @@ source("modules/management_breeder_selection_server.R")
 managementServer <- function(id, rd) {
   moduleServer(id, function(input, output, session) {
     
-    # ── Inter-module dependency note ──────────────────────────────────────────
     # Depends on rd$litterplan / rd$litterage from popOverviewLitterServer.
-    # ─────────────────────────────────────────────────────────────────────────
+
     
     # ══════════════════════════════════════════════════════════════════════════
-    # SHARED UTILITIES (passed to helpers as plain objects)
+    # SHARED UTILITIES
     # ══════════════════════════════════════════════════════════════════════════
     
     ly_row <- function(label, value) {
@@ -40,11 +36,6 @@ managementServer <- function(id, rd) {
     
     # ══════════════════════════════════════════════════════════════════════════
     # SHARED REACTIVES
-    # Inputs consumed here:
-    #   input$litdam         – max litters per dam        (Pop Growth UI)
-    #   input$retire_col     – optional retirement column (Pop Growth UI)
-    #   input$correction_pct  – litter correction %           (Pop Growth UI)
-    #   input$goal           – desired yearly pup count   (Pop Growth UI)
     # ══════════════════════════════════════════════════════════════════════════
     
     breeders_col_specified <- reactive({
@@ -90,7 +81,6 @@ managementServer <- function(id, rd) {
       
       breeders_female <- bind_rows(breeders_female_base, extra_dams)
       
-      # after
       if (!is.null(input$retire_col) && input$retire_col != "None" &&
           input$retire_col %in% names(breeders_female)) {
         breeders_female <- breeders_female %>%

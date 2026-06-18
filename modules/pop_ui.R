@@ -1,9 +1,7 @@
 # ── pop_ui.R ──────────────────────────────────────────────────────────────────
 # Single entry point for the entire Population section.
 # All panels share the "pop" namespace → output IDs are "pop-vb_animals" etc.
-#
-# Main UI change: replace the 4 separate UI calls with  popUI("pop")
-# server.R change: replace 4 module calls  with  popServer("pop", rd)
+
 
 source("modules/pop_overview_ui.R")
 source("modules/pop_litters_ui.R")

@@ -1,26 +1,6 @@
 # ── management_breeder_selection_server.R ────────────────────────────────────
 # Panel helper for the "Breeder Selection" tab.
-# Called from managementServer(); shares input/output/session namespace.
-#
-# Inputs consumed: goal_vars, goal_dir_*, goal_val_*, goal_pri_*,
-#                  save_goals, clear_goals, date_range, toggle_sex,
-#                  breedersbutton, compliance_rank_order,
-#                  breederselection_rows_selected,
-#                  convert_button, undo_convert
-# Reactive args:   litter_stats, retirement_dates, breeders_col_specified,
-#                  data_var_classes
-# Reads from rd:   rd$data, rd$breeders, rd$ped, rd$merged, rd$param_goals,
-#                  rd$damsint, rd$siresint, rd$datid, rd$datsex, rd$datdob,
-#                  rd$datM, rd$datF
-# Defines outputs: no_breeders_warning_bs, goal_var_selector, goal_criteria_inputs,
-#                  goals_saved_alert, breedertimerange, breederselection,
-#                  selected_new_breeders, convert_to_breed, breeders_converted,
-#                  compliance_rank_order_ui, compliance_table,
-#                  vb_mandatory_compliance, vb_breeders_passing,
-#                  vb_bs_dams_needed, vb_bs_sires_needed,
-#                  vb_bs_dams_back, vb_bs_sires_back, recruitment_status
-# Depends on global helpers: apply_goal_filter, transform_to_delta,
-#                             make_delta_datatable, dir_to_long
+
 
 managementBreederSelectionHelper <- function(
     input, output, session, rd,

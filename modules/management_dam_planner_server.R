@@ -1,13 +1,5 @@
 # ── management_dam_planner_server.R ──────────────────────────────────────────
 # Panel helper for the "Dam Planner" tab.
-# Called from managementServer(); shares input/output/session namespace.
-#
-# Inputs consumed: litdam, dam_filter, gantt_year_range,
-#                  show_active, show_retiring, show_upcoming, show_retired
-# Defines outputs: no_breeders_warning_dam, vb_age_first, vb_interval,
-#                  vb_per_year, vb_litter_size, vb_genint,
-#                  dam_status_*, dam_detail_section, dam_detail_table,
-#                  gantt_chart
 
 managementDamPlannerHelper <- function(input, output, session, rd,
                                        litter_stats,

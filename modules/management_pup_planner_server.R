@@ -1,16 +1,5 @@
 # ── management_pup_planner_server.R ──────────────────────────────────────────
 # Panel helper for the "Progeny Planner" tab.
-# Called from managementServer(); shares input/output/session namespace.
-#
-# Inputs consumed: (none beyond shared reactives)
-# Reactive args:   litter_stats, retirement_dates, pup_projection_data,
-#                  capacity_vals, breeders_col_specified
-# Defines outputs: no_breeders_warning_pup, vb_pups_last, vb_pups_expected_last,
-#                  vb_coverage, vb_pups_projected (FIXED – uses capacity_vals),
-#                  pup_projection (plotly), yearly_dam_table_header,
-#                  yearly_dam_table
-# Note: vb_pups_projected intentionally equals vb_capacity (Pop Growth) — both
-#       read capacity_vals()$capacity so they always show the same number.
 
 managementPupPlannerHelper <- function(
     input, output, session, rd,
@@ -82,8 +71,6 @@ managementPupPlannerHelper <- function(
     h3(pct, style = color)
   })
   
-  # FIX: was using pup_projection_data() which only includes years with actual litters;
-  # now uses capacity_vals()$capacity — the same number shown in Population Growth.
   output$vb_pups_projected <- renderUI({
     if (!breeders_col_specified()) return(h3("\u2014", style = "color:grey"))
     cv <- capacity_vals()

@@ -121,7 +121,7 @@ popParamsHelper <- function(input, output, session, rd) {
     var  <- safe_var()
     data <- param_data()
     
-    # COI 
+    # COI trend
     if (var == "Coefficient of Inbreeding (COI)") {
       req(rd$inbreeding, rd$ownpop, rd$datid)
       
